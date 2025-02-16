@@ -1,4 +1,5 @@
-from vehicles import Car, Motorcycle
+from car import Car
+from motorcycle import Motorcycle
 import traceback
 
 if __name__ == '__main__':
@@ -6,23 +7,23 @@ if __name__ == '__main__':
     bike = Motorcycle()
 
     print("The Motorcycle\n")
-    bike.assign_rider("hanane")
+    bike.assign_rider("Subodh")
     bike.rev_throttle()
     bike.pull_brake_lever()
     print("\n")
 
     print("The Car\n")
-    car.assign_driver("romaissa")
+    car.assign_driver("Sushant")
     car.accelerate()
     car.apply_brakes()
     print("\n")
 
-    print("Attempting to call car methods on a motorcycle object\n")
+    print("Attempting to call client methods with the service object\n")
 
     try:
-        bike.assign_driver("Robert")  # Wrong method for a motorcycle
-        bike.accelerate()  # Motorcycles don't have `accelerate()`
-        bike.apply_brakes()  # Motorcycles don't have `apply_brakes()`
+        bike.assign_driver("Robert")
+        bike.accelerate()
+        bike.apply_brakes()
     except AttributeError:
-        print("Oops! The bike object cannot access car methods.")
+        print("Oops! bike object cannot access car methods")
         traceback.print_exc()
