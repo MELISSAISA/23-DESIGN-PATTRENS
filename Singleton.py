@@ -1,13 +1,36 @@
-class Singleton:
-    _instance = None
+# SingletonClass
+class SingletonClass(object):
+  def __new__(cls):
+    if not hasattr(cls, 'instance'):
+      cls.instance = super(SingletonClass, cls).__new__(cls)
+    return cls.instance
+  
+class SingletonChild(SingletonClass):
+    pass
+  
+singleton = SingletonClass()  
+child = SingletonChild()
+print(child is singleton)
 
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
+singleton.singl_variable = "Singleton Variable"
+print(child.singl_variable)
 
-# Usage
-singleton1 = Singleton()
-singleton2 = Singleton()
+# BorgSingleton
+class BorgSingleton(object):
+  _shared_borg_state = {}
+  
+  def __new__(cls, *args, **kwargs):
+    obj = super(BorgSingleton, cls).__new__(cls, *args, **kwargs)
+    obj.__dict__ = cls._shared_borg_state
+    return obj
+  
+borg = BorgSingleton()
+borg.shared_variable = "Shared Variable"
 
-print(singleton1 is singleton2)  # Output: True
+class ChildBorg(BorgSingleton):
+  pass
+
+childBorg = ChildBorg()
+print(childBorg is borg)
+print(childBorg.shared_variable)
+
