@@ -7,13 +7,13 @@ if __name__ == '__main__':
     bike = Motorcycle()
 
     print("The Motorcycle\n")
-    bike.assign_rider("Subodh")
+    bike.assign_rider("hanane")
     bike.rev_throttle()
     bike.pull_brake_lever()
     print("\n")
 
     print("The Car\n")
-    car.assign_driver("Sushant")
+    car.assign_driver("romissa")
     car.accelerate()
     car.apply_brakes()
     print("\n")
